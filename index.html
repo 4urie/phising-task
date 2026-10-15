@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Facebook-inspired login · Classroom simulation</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#111;--blue:#0866ff}*{box-sizing:border-box}body{margin:0;background:white}button,input{font:inherit}button{cursor:pointer}.training{padding:10px 16px;text-align:center;background:#edf4ff;color:#345171;font-size:11px;letter-spacing:.3px}.training strong{color:#16498d}.layout{display:grid;grid-template-columns:56.4% 43.6%;min-height:582px}.visual{position:relative;overflow:hidden;min-height:582px;border-right:1px solid #dadde1}.brand{position:absolute;top:5px;left:5.2%;width:54px;height:54px;border-radius:50%;background:#0866df;color:white;overflow:hidden;font:bold 65px Arial;text-align:center;padding:2px 0 0 3px}h1{position:absolute;left:4.4%;bottom:46px;margin:0;font-size:clamp(42px,4.15vw,60px);line-height:1.05;letter-spacing:-2px;z-index:2}h1 span{color:var(--blue)}.collage{position:absolute;width:440px;height:510px;top:20px;right:4.5%}.photo{position:absolute;overflow:hidden;border-radius:19px;box-shadow:0 1px 7px #0003;background:linear-gradient(140deg,#92c5e6,#b6a2df)}.photo img{width:100%;height:100%;object-fit:cover;display:block}.back{left:28px;top:91px;width:222px;height:192px;transform:rotate(-1deg)}.story{right:15px;top:3px;width:216px;height:382px}.story img{object-position:46% center}.progress{position:absolute;top:16px;left:16px;right:16px;height:4px;border-radius:10px;background:#ffffff70}.progress:after{content:'';display:block;height:100%;width:45%;background:white;border-radius:inherit}.controls{position:absolute;bottom:15px;left:14px;right:14px;display:flex;gap:7px}.controls i{border:2px solid white;width:23px;height:23px;border-radius:50%}.controls i:first-child{flex:1;border-radius:20px}.music{position:absolute;top:52px;right:-6px;background:#7760ed;color:white;padding:7px 10px;border-radius:10px;font-size:12px}.post{left:73px;top:243px;width:158px;height:232px;padding:12px;background:white;border-radius:15px}.post-icon{color:white;background:var(--blue);width:21px;height:21px;border-radius:5px;text-align:center;line-height:21px;margin-bottom:12px;font-size:15px}.post img{height:136px;border-radius:8px}.line{height:11px;background:#e9ebed;border-radius:12px;margin-top:11px}.line.short{width:68%;height:9px;margin-top:8px}.avatar{position:absolute;bottom:6px;left:196px;width:129px;height:129px;border:3px solid #0879ff;border-radius:50%;padding:4px;background:white;box-shadow:0 1px 5px #0004;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}.emoji{position:absolute;top:30px;left:-10px;font-size:47px;transform:rotate(-17deg)}.heart{position:absolute;right:-24px;top:287px;background:linear-gradient(135deg,#ff8bce,#ff0050 75%);color:white;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:42px;transform:rotate(-12deg)}.login{align-self:start;padding:79px 8.1% 35px}.login h2{font-size:16px;font-weight:500;margin:0 0 22px}.demo-tag{color:#68798b;font-size:12px}.field{display:block;position:relative;margin-bottom:11px}.field span{position:absolute;top:8px;left:16px;font-size:10px;color:#657080}input{width:100%;height:55px;border:1px solid #cfd2d6;border-radius:15px;padding:21px 16px 7px;color:#526071;background:white;font-size:14px}input:focus-visible,button:focus-visible{outline:3px solid #94c0ff;outline-offset:3px}.primary,.create{width:100%;border-radius:25px;height:40px;font-size:14px}.primary{margin-top:11px;background:#0866e6;border:0;color:white}.primary:hover{background:#075ac9}.forgot{display:block;margin:14px auto 0;padding:8px;background:transparent;border:0;font-size:14px}.create{background:white;color:var(--blue);border:1px solid var(--blue);margin-top:50px}.create:hover{background:#f4f8ff}.meta{display:flex;align-items:center;justify-content:center;gap:3px;margin-top:19px;color:#1c2b33;font-size:14px}.meta svg{width:20px;height:18px;fill:none;stroke:#087bff;stroke-width:2}.note{text-align:center;font-size:11px;color:#768190;margin:17px 0 0}footer{border-top:1px solid #dadde1;padding:29px 24px 20px;text-align:center;font-size:12px;color:#637386}.languages{display:flex;justify-content:center;flex-wrap:wrap;gap:27px}footer p{margin:20px 0 0;color:#8a919b;font-size:11px}dialog{max-width:420px;width:calc(100% - 40px);padding:30px;border:1px solid #dae1ed;border-radius:20px;box-shadow:0 20px 80px #0002}dialog::backdrop{background:#182d4c66;backdrop-filter:blur(4px)}dialog h2{font-size:23px;margin:0 0 14px}dialog p{color:#526071;line-height:1.6;font-size:14px}
+@media(min-width:1500px){.layout,.visual{min-height:680px}.collage{top:60px;right:10%}.login{padding-top:115px}}@media(max-width:1100px){.collage{right:-5%;transform:scale(.85);transform-origin:top right;top:45px}h1{font-size:49px}.login{padding-left:7%;padding-right:7%}}@media(max-width:760px){.layout{grid-template-columns:1fr;min-height:auto}.visual{min-height:175px;border:0}.brand{width:44px;height:44px;font-size:53px;top:24px;left:calc(50% - 22px)}.collage{display:none}h1{position:static;text-align:center;padding-top:90px;font-size:28px;letter-spacing:-.8px}h1 br{display:none}.login{padding:12px 24px 40px;width:100%;max-width:490px;margin:auto}.login h2{text-align:center}.create{margin-top:30px}.languages{gap:14px 22px}.training{font-size:10px;line-height:1.5}}
+</style>
+</head>
+<body>
+<div class="training"><strong>CLASSROOM SIMULATION</strong> · Information Assurance and Security 2 · Not affiliated with Facebook · Preset test data only</div>
+<main class="layout">
+<section class="visual" aria-label="Explore the things you love">
+<div class="brand" aria-label="Facebook-inspired design">f</div>
+<h1>Explore<br>the<br>things<br><span>you love</span>.</h1>
+<div class="collage" aria-hidden="true">
+<div class="photo back"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&amp;fit=crop&amp;w=500&amp;q=85" alt=""></div>
+<div class="photo story"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=550&amp;q=85" alt=""><div class="progress"></div><div class="controls"><i></i><i></i><i></i></div></div>
+<div class="music">◷ 16:45</div>
+<div class="photo post"><div class="post-icon">★</div><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&amp;fit=crop&amp;w=400&amp;q=85" alt=""><div class="line"></div><div class="line short"></div></div>
+<div class="avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=250&amp;q=85" alt=""></div>
+<div class="emoji">😆</div><div class="heart">♥</div>
+</div></section>
+<section class="login" aria-labelledby="login-heading">
+<h2 id="login-heading">Log into Facebook <span class="demo-tag">· demo</span></h2>
+<form id="demo-form">
+<label class="field"><span>Email or mobile number · preset demo</span><input type="text" value="student@example.test" readonly autocomplete="off" aria-label="Preset demo email"></label>
+<label class="field"><span>Password · preset demo</span><input type="password" value="DemoOnly123!" readonly autocomplete="off" aria-label="Preset demo password"></label>
+<button class="primary" type="submit">Log in</button>
+</form>
+<button class="forgot" type="button" data-action="reset">Forgot password?</button>
+<button class="create" type="button" data-action="create">Create new account</button>
+<div class="meta"><svg viewBox="0 0 28 20" aria-hidden="true"><path d="M14 10C10-2 5 0 2 9c-3 12 6 12 12 1C20-1 25-2 27 10c2 12-6 11-13 0Z"/></svg>Meta</div>
+<p class="note">Training replica. No credentials are collected or sent.</p>
+</section></main>
+<footer><div class="languages"><span>English (US)</span><span>Filipino</span><span>Bisaya</span><span>Español</span><span>日本語</span><span>한국어</span><span>中文(简体)</span><span>More languages…</span></div><p>Information Assurance and Security 2 · Educational interface study</p></footer>
+<dialog id="feedback" aria-labelledby="feedback-title"><h2 id="feedback-title"></h2><p id="feedback-message"></p><button id="close-dialog" class="primary" type="button">Back to demo</button></dialog>
+<script>
+const feedback = document.querySelector('#feedback');
+function showFeedback(title, message) {
+  document.querySelector('#feedback-title').textContent = title;
+  document.querySelector('#feedback-message').textContent = message;
+  feedback.showModal();
+}
+document.querySelector('#demo-form').addEventListener('submit', event => {
+  event.preventDefault();
+  showFeedback('Simulation complete', 'You used the fixed classroom test account. No login data was read, stored, or transmitted. Familiar branding alone does not establish that a website is authentic. Always check the website address before signing in.');
+});
+document.querySelector('[data-action="reset"]').addEventListener('click', () => showFeedback('Password recovery demo', 'This classroom page has no real accounts or password recovery. The fields contain preset test values.'));
+document.querySelector('[data-action="create"]').addEventListener('click', () => showFeedback('Account creation demo', 'Account creation is simulated. This exercise does not create a Facebook account or request personal information.'));
+document.querySelector('#close-dialog').addEventListener('click', () => feedback.close());
+</script>
+</body></html>
