@@ -20,8 +20,8 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 if __name__ == '__main__':
-    print('Classroom simulation: http://127.0.0.1:8000\nPress Ctrl+C to stop.')
+    print('Classroom simulation: http://127.0.0.1:8000\nOther devices: http://<this-laptop-LAN-IP>:8000\nPress Ctrl+C to stop.')
     try:
-        HTTPServer(('127.0.0.1', 8000), Handler).serve_forever()
+        HTTPServer(('0.0.0.0', 8000), Handler).serve_forever()
     except KeyboardInterrupt:
         print('\nDemo stopped.')
