@@ -520,84 +520,68 @@
         <h2 id="login-heading">
           Log into Facebook <span class="demo-tag">· demo</span>
         </h2>
-     ```html
-<form id="demo-form">
-  <label class="field">
-    <span>Email or mobile number · preset demo</span>
-    <input
-      id="demo-email"
-      type="text"
-      value="student@example.test"
-      autocomplete="off"
-      aria-label="Preset demo email"
-    />
-  </label>
+        <form id="demo-form">
+          <label class="field"
+            ><span>Email or mobile number · preset demo</span
+            ><input
+              type="text"
+              value="student@example.test"
+              autocomplete="off"
+              aria-label="Preset demo email"
+          /></label>
+          <div class="field password-field">
+            <label for="demo-password">
+              <span>Password · preset demo</span>
+            </label>
 
-  <div class="field password-field">
-    <label for="demo-password">
-      <span>Password · preset demo</span>
-    </label>
+            <input
+              id="demo-password"
+              type="password"
+              value="DemoOnly123!"
+              autocomplete="off"
+            />
 
-    <input
-      id="demo-password"
-      type="password"
-      value="DemoOnly123!"
-      autocomplete="off"
-    />
-
-    <button
-      id="toggle-password"
-      class="password-toggle"
-      type="button"
-      aria-label="Show password"
-      aria-controls="demo-password"
-      hidden
-    >
-      Show
-    </button>
-  </div>
-
-  <button class="primary" type="submit">Log in</button>
-</form>
-
-<button class="forgot" type="button" data-action="reset">
-  Forgot password?
-</button>
-
-<button class="create" type="button" data-action="create">
-  Create new account
-</button>
-
-<div class="meta">
-  <span>Meta</span>
-</div>
-
-<p class="note">
-  Training replica. No credentials are collected or sent.
-</p>
-
-<script>
-  const password = document.getElementById("demo-password");
-  const toggle = document.getElementById("toggle-password");
-
-  toggle.hidden = false;
-
-  toggle.addEventListener("click", () => {
-    const showing = password.type === "text";
-    password.type = showing ? "password" : "text";
-    toggle.textContent = showing ? "Show" : "Hide";
-    toggle.setAttribute(
-      "aria-label",
-      showing ? "Show password" : "Hide password"
-    );
-  });
-
-  document.getElementById("demo-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    alert("Demo only. No credentials were sent.");
-  });
-</script>
-```
+            <button
+              id="toggle-password"
+              class="password-toggle"
+              type="button"
+              aria-label="Show password"
+              aria-controls="demo-password"
+              hidden
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+                <path id="eye-slash" d="M3 3l18 18" style="display: none" />
+              </svg>
+            </button>
+          </div>
+          <button class="primary" type="submit">Log in</button>
+        </form>
+        <button class="forgot" type="button" data-action="reset">
+          Forgot password?
+        </button>
+        <button class="create" type="button" data-action="create">
+          Create new account
+        </button>
+        <div class="meta">
+          <svg viewBox="0 0 28 20" aria-hidden="true">
+            <path
+              d="M14 10C10-2 5 0 2 9c-3 12 6 12 12 1C20-1 25-2 27 10c2 12-6 11-13 0Z"
+            /></svg
+          >Meta
+        </div>
+        <p class="note">
+          Training replica. No credentials are collected or sent.
+        </p>
       </section>
     </main>
     <footer>
