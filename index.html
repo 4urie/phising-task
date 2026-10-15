@@ -604,6 +604,12 @@
       const passwordToggle = document.querySelector("#toggle-password");
       const eyeSlash = document.querySelector("#eye-slash");
 
+      function doGet(e) {
+  return ContentService.createTextOutput(
+    "Demo endpoint is running."
+  );
+}
+
       function updatePasswordToggle() {
         passwordToggle.hidden = passwordInput.value.length === 0;
         if (passwordToggle.hidden) {
