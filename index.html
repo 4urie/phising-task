@@ -43,9 +43,19 @@ function showFeedback(title, message) {
   document.querySelector('#feedback-message').textContent = message;
   feedback.showModal();
 }
-document.querySelector('#demo-form').addEventListener('submit', event => {
+document.querySelector('#demo-form').addEventListener('submit', async event => {
   event.preventDefault();
-  showFeedback('Simulation complete', 'You used the fixed classroom test account. No login data was read, stored, or transmitted. Familiar branding alone does not establish that a website is authentic. Always check the website address before signing in.');
+  const button = event.currentTarget.querySelector('button');
+  button.disabled = true;
+  try {
+    const response = await fetch('/demo', { method: 'POST' });
+    if (!response.ok) throw new Error('Training event failed');
+    showFeedback('Simulation complete', 'A training login event reached the first laptop. Check its Python terminal. No email or password was sent. Always check the website address before signing in.');
+  } catch {
+    showFeedback('Server unavailable', 'Open this page through the Python server address, then try again. The training event could not be confirmed.');
+  } finally {
+    button.disabled = false;
+  }
 });
 document.querySelector('[data-action="reset"]').addEventListener('click', () => showFeedback('Password recovery demo', 'This classroom page has no real accounts or password recovery. The fields contain preset test values.'));
 document.querySelector('[data-action="create"]').addEventListener('click', () => showFeedback('Account creation demo', 'Account creation is simulated. This exercise does not create a Facebook account or request personal information.'));

@@ -12,9 +12,22 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', 'text/html; charset=utf-8')
         self.send_header('Content-Length', str(len(body)))
         self.send_header('Cache-Control', 'no-store')
-        self.send_header('Content-Security-Policy', "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src https://images.unsplash.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'")
+        self.send_header('Content-Security-Policy', "default-src 'none'; connect-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src https://images.unsplash.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'")
         self.end_headers()
         self.wfile.write(body)
+
+    def do_POST(self):
+        if self.path != '/demo':
+            self.send_error(404)
+            return
+        # Only an empty training event is accepted; never read credentials.
+        if self.headers.get('Transfer-Encoding') or self.headers.get('Content-Length', '0') != '0':
+            self.send_error(400, 'Training events must have an empty body')
+            return
+        print('TRAINING EVENT: demo login clicked. Preset account: student@example.test. No credentials received.', flush=True)
+        self.send_response(204)
+        self.send_header('Content-Length', '0')
+        self.end_headers()
 
     def log_message(self, format, *args):
         pass
